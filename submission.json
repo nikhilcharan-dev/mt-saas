@@ -1,0 +1,44 @@
+{
+  
+  "projectName": "Multi-Tenant SaaS Platform",
+  "candidateName": "Sravani Punnam",
+  "testCredentials": {
+    "superAdmin": {
+      "email": "superadmin@system.com",
+      "password": "Admin@123"
+    },
+    "tenantAdmin": {
+      "email": "admin@demo.com",
+      "password": "Demo@123",
+      "tenantSubdomain": "demo"
+    },
+    "user": {
+      "email": "user1@demo.com",
+      "password": "User@123",
+      "tenantSubdomain": "demo"
+    }
+   },
+
+  "featuresImplemented": [
+    "Multi-tenant architecture with tenant isolation",
+    "Role-based authentication and authorization",
+    "Super Admin, Tenant Admin, and User roles",
+    "Tenant registration and login",
+    "Project and task management",
+    "Audit logging",
+    "Protected routes (frontend & backend)",
+    "Persistent login using localStorage",
+    "Dockerized backend and database"
+  ],
+  "screenshots": [
+    "docs/images/docker-running.png",
+    "docs/images/database-erd.png",
+    "docs/images/superadmin-dashboard.png",
+    "docs/images/tenant-admin-dashboard.png",
+    "docs/images/user-dashboard.png"
+  ],
+  "repository": {
+    "github": "https://github.com/Sravanipunnam/multi-tenant-saas.git"
+  },
+  "status": "Completed"
+}
