@@ -59,7 +59,7 @@ This project is fully **Dockerized** and production-ready, with automated databa
 
 Clone the repository:
 bash
-git clone https://github.com/Sravanipunnam/multi-tenant-saas.git
+git clone https://github.com/nikhilcharan-dev/mt-saas.git
 cd multi-tenant-saas
 docker-compose up -d --build
 
