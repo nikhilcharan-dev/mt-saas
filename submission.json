@@ -1,7 +1,7 @@
 {
   
   "projectName": "Multi-Tenant SaaS Platform",
-  "candidateName": "Sravani Punnam",
+  "candidateName": "Nikhil Charan",
   "testCredentials": {
     "superAdmin": {
       "email": "superadmin@system.com",
@@ -38,7 +38,7 @@
     "docs/images/user-dashboard.png"
   ],
   "repository": {
-    "github": "https://github.com/Sravanipunnam/multi-tenant-saas.git"
+    "github": "https://github.com/nikhilcharan-dev/mt-saas.git"
   },
   "status": "Completed"
 }
