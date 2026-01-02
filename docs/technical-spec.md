@@ -1,97 +1,65 @@
-# Technical Specification
-## Multi-Tenant SaaS Platform – Project & Task Management System
+# Technical Platform Architecture – Version B
 
----
+## Stack Composition
+- **Server Side:** Node.js v18 with Express, TypeScript, Prisma ORM, Zod schema validation, JWT authentication, bcrypt-based password security.
+- **Client Side:** React 18 application bundled using Vite, client routing via React Router, REST calls using fetch.
+- **Persistence Layer:** PostgreSQL 15 database.
+- **Infrastructure:** Docker containers managed through Docker Compose.
 
-## 1. Project Structure
+## Codebase Structure
+- **backend/**
+  - `src/index.ts` – Server bootstrap logic
+  - `src/controllers/` – Modules for authentication, tenant handling, users, projects, and tasks
+  - `src/middleware/auth.ts` – Authorization and token verification
+  - `src/routes/` – REST endpoint mappings
+  - `src/utils/` – JWT and audit utilities
+  - `src/prisma.ts` – Database client
+  - `prisma/schema.prisma` – Data model
+  - `prisma/seed.js` – Initial dataset
+- **frontend/**
+  - `src/main.jsx`, `src/App.jsx` – App initialization and routing
+  - `src/context/AuthContext.jsx` – User session management
+  - `src/components/ProtectedRoute.jsx` – Access-protected routes
+  - `src/services/api.js` – Backend API wrapper
+  - `src/pages/` – Application views
+- **docs/** – All supporting documentation
+- `docker-compose.yml` – Service definitions
+- `integration-test.js` – Integration validation script
 
-### Backend Structure
+## Configuration Parameters
 
-backend/
-├── src/
-│ ├── controllers/ # Business logic for APIs
-│ ├── routes/ # API route definitions
-│ ├── middleware/ # Auth, RBAC, tenant isolation
-│ ├── models/ # Database query logic
-│ ├── utils/ # Helper functions (JWT, audit logs)
-│ ├── config/ # Database and environment config
-│ └── app.js # Express app entry point
-├── migrations/ # SQL migration files
-├── seeds/ # Seed data SQL
-├── Dockerfile # Backend Docker configuration
-├── package.json
-└── .env
+### Backend Variables
+- Database connection string
+- JWT secret and expiry
+- API server port
+- Frontend origin URL
 
-### Frontend Structure
+### Frontend Variables
+- API base URL
 
-frontend/
-├── src/
-│ ├── components/ # Reusable UI components
-│ ├── pages/ # Page-level components
-│ ├── services/ # API calls (Axios)
-│ ├── context/ # Auth and global state
-│ ├── routes/ # Protected routes
-│ ├── utils/ # Helper utilities
-│ └── App.js
-├── public/
-├── Dockerfile # Frontend Docker configuration
-└── package.json
+## Local Execution Flow
+1. Configure and run PostgreSQL.
+2. Initialize backend with dependencies, migrations, and seed data.
+3. Launch frontend development server.
 
----
+## Docker Workflow
+1. Start full stack using Docker Compose.
+2. Validate service health and UI access.
+3. Tear down services when finished.
 
-## 2. Development Setup Guide
+## Quality Validation
+- Run integration tests to validate APIs.
+- Execute unit tests for backend modules.
 
-### Prerequisites
-- Node.js v18+
-- Docker & Docker Compose
-- Git
+## API Implementation Details
+- Centralized authentication routes.
+- Role-based permission checks.
+- Tenant-aware data access.
+- Unified success and error responses.
 
----
-
-## 3. Environment Variables
-
-### Backend Environment Variables
-
-DB_HOST=database
-DB_PORT=5432
-DB_NAME=saas_db
-DB_USER=postgres
-DB_PASSWORD=postgres
-
-JWT_SECRET=your_jwt_secret_key
-JWT_EXPIRES_IN=24h
-
-PORT=5000
-NODE_ENV=development
-
-FRONTEND_URL=http://frontend:3000
-
----
-
-## 4. Local Development Setup
-
-### Step 1: Clone Repository
-git clone <repository-url>
-cd mt-saas
-
-### Step 2: Start Application with Docker
-
-### Step 3: Verify Services
-- Backend Health Check: http://localhost:5000/api/health
-- Frontend: http://localhost:3000
-
----
-
-## 5. Database Setup
-
-- Migrations run automatically on backend startup
-- Seed data loads automatically
-- No manual database commands required
-
----
-
-## 6. Testing
-
-- APIs tested using Postman or Swagger
-- JWT token required for protected routes
-- Role-based access validated manually
+## Production Readiness
+- Secure secret management.
+- TLS-enabled deployments.
+- Controlled CORS policies.
+- Automated database migration execution.
+- Optimized frontend production builds.

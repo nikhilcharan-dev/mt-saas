@@ -1,44 +1,224 @@
 {
-  
-  "projectName": "Multi-Tenant SaaS Platform",
-  "candidateName": "Nikhil Charan",
+  "projectName": "Multi-Tenant SaaS Platform with Project & Task Management",
+  "description": "A comprehensive dockerized multi-tenant SaaS application with user management, project management, and task tracking. Features RBAC, subscription-based limits, audit logging, and JWT authentication.",
+  "deploymentUrl": {
+    "frontend": "http://localhost:3000",
+    "backend": "http://localhost:5000/api",
+    "database": "localhost:5432"
+  },
+  "technologies": {
+    "frontend": "React 18.2.0 + Vite + React Router v6",
+    "backend": "Node.js 18 + Express 4.18 + TypeScript 5.1",
+    "database": "PostgreSQL 15 + Prisma 5.1 ORM",
+    "authentication": "JWT (24h expiry) + bcryptjs password hashing",
+    "validation": "Zod input validation",
+    "containerization": "Docker + Docker Compose",
+    "testing": "Jest + ts-jest"
+  },
+  "features": [
+    "Multi-tenant architecture with strict data isolation",
+    "Role-based access control (super_admin, admin, user)",
+    "JWT-based authentication with 24-hour token expiry",
+    "Subscription-based user and project limits",
+    "Comprehensive audit logging for all modifications",
+    "19 RESTful API endpoints",
+    "Automatic database migrations and seeding",
+    "Docker Compose orchestration with health checks",
+    "React frontend with protected routes",
+    "Responsive UI with CRUD operations for all resources"
+  ],
+  "apiEndpoints": {
+    "authentication": [
+      "POST /api/auth/register-tenant - Register new tenant",
+      "POST /api/auth/login - User login",
+      "GET /api/auth/me - Get current user",
+      "POST /api/auth/logout - User logout"
+    ],
+    "tenants": [
+      "GET /api/tenants - List all tenants (super_admin only)",
+      "GET /api/tenants/:tenantId - Get tenant details",
+      "PUT /api/tenants/:tenantId - Update tenant"
+    ],
+    "users": [
+      "POST /api/tenants/:tenantId/users - Add user",
+      "GET /api/tenants/:tenantId/users - List users",
+      "PUT /api/users/:userId - Update user",
+      "DELETE /api/users/:userId - Delete user"
+    ],
+    "projects": [
+      "POST /api/tenants/:tenantId/projects - Create project",
+      "GET /api/tenants/:tenantId/projects - List projects",
+      "PUT /api/projects/:projectId - Update project",
+      "DELETE /api/projects/:projectId - Delete project"
+    ],
+    "tasks": [
+      "POST /api/projects/:projectId/tasks - Create task",
+      "GET /api/projects/:projectId/tasks - List tasks",
+      "PUT /api/tasks/:taskId - Update task",
+      "DELETE /api/tasks/:taskId - Delete task"
+    ],
+    "health": [
+      "GET /api/health - Backend health check"
+    ]
+  },
   "testCredentials": {
     "superAdmin": {
       "email": "superadmin@system.com",
-      "password": "Admin@123"
+      "password": "Admin@123",
+      "role": "super_admin",
+      "tenantId": null,
+      "description": "System administrator with access to all tenants"
     },
-    "tenantAdmin": {
-      "email": "admin@demo.com",
-      "password": "Demo@123",
-      "tenantSubdomain": "demo"
-    },
-    "user": {
-      "email": "user1@demo.com",
-      "password": "User@123",
-      "tenantSubdomain": "demo"
+    "demoTenant": {
+      "name": "Demo Company",
+      "subdomain": "demo",
+      "status": "active",
+      "subscriptionPlan": "pro",
+      "maxUsers": 25,
+      "maxProjects": 15,
+      "admin": {
+        "email": "admin@demo.com",
+        "password": "Demo@123",
+        "role": "tenant_admin",
+        "fullName": "Demo Admin",
+        "description": "Tenant administrator with full control over the tenant"
+      },
+      "users": [
+        {
+          "email": "user1@demo.com",
+          "password": "User@123",
+          "role": "user",
+          "fullName": "Demo User 1",
+          "description": "Regular tenant user"
+        },
+        {
+          "email": "user2@demo.com",
+          "password": "User@123",
+          "role": "user",
+          "fullName": "Demo User 2",
+          "description": "Regular tenant user"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Project Alpha",
+          "description": "First demo project with sample tasks"
+        },
+        {
+          "name": "Project Beta",
+          "description": "Second demo project with sample tasks"
+        }
+      ]
     }
-   },
-
-  "featuresImplemented": [
-    "Multi-tenant architecture with tenant isolation",
-    "Role-based authentication and authorization",
-    "Super Admin, Tenant Admin, and User roles",
-    "Tenant registration and login",
-    "Project and task management",
-    "Audit logging",
-    "Protected routes (frontend & backend)",
-    "Persistent login using localStorage",
-    "Dockerized backend and database"
-  ],
-  "screenshots": [
-    "docs/images/docker-running.png",
-    "docs/images/database-erd.png",
-    "docs/images/superadmin-dashboard.png",
-    "docs/images/tenant-admin-dashboard.png",
-    "docs/images/user-dashboard.png"
-  ],
-  "repository": {
-    "github": "https://github.com/nikhilcharan-dev/mt-saas.git"
   },
-  "status": "Completed"
+  "quickStart": {
+    "startServices": "docker-compose up -d",
+    "stopServices": "docker-compose down",
+    "viewLogs": {
+      "backend": "docker logs backend -f",
+      "frontend": "docker logs frontend -f",
+      "database": "docker logs database -f"
+    },
+    "accessApplication": {
+      "frontend": "http://localhost:3000",
+      "backend": "http://localhost:5000/api"
+    }
+  },
+  "fileStructure": {
+    "frontend": {
+      "src/pages": "React pages: LoginPage, RegisterPage, DashboardPage, UsersPage, ProjectsPage, TasksPage",
+      "src/components": "ProtectedRoute - Route guard for authenticated users",
+      "src/context": "AuthContext - Global authentication state management",
+      "src/services": "API service wrapper for all backend endpoints",
+      "vite.config.js": "Vite configuration for React development"
+    },
+    "backend": {
+      "src/controllers": "Business logic for all 19 API endpoints",
+      "src/routes": "Express route definitions",
+      "src/middleware": "JWT authentication middleware",
+      "src/utils": "JWT token utilities and audit logging",
+      "prisma/schema.prisma": "Database schema with 5 models",
+      "prisma/seed.js": "Database seeding script",
+      "entrypoint.sh": "Docker initialization script"
+    }
+  },
+  "workflowTesting": {
+    "scenario1": {
+      "title": "Register New Tenant",
+      "steps": [
+        "POST /api/auth/register-tenant with tenant details",
+        "Verify tenant created in database",
+        "Verify admin user created with role 'admin'"
+      ]
+    },
+    "scenario2": {
+      "title": "Login and Access Dashboard",
+      "steps": [
+        "POST /api/auth/login with email and password",
+        "Receive JWT token (24h expiry)",
+        "GET /api/auth/me to verify user details",
+        "Navigate to /dashboard to view tenant statistics"
+      ]
+    },
+    "scenario3": {
+      "title": "Create Project with Tasks",
+      "steps": [
+        "POST /api/tenants/{tenantId}/projects to create project",
+        "POST /api/projects/{projectId}/tasks to create tasks",
+        "GET /api/projects/{projectId}/tasks to list tasks",
+        "PUT /api/tasks/{taskId} to update task status"
+      ]
+    },
+    "scenario4": {
+      "title": "Manage Users",
+      "steps": [
+        "POST /api/tenants/{tenantId}/users to add users",
+        "GET /api/tenants/{tenantId}/users to list users",
+        "PUT /api/users/{userId} to update user role",
+        "DELETE /api/users/{userId} to remove user",
+        "Verify subscription limits are enforced"
+      ]
+    }
+  },
+  "dataValidation": {
+    "authentication": "Zod validation for email, password formats",
+    "users": "Unique email per tenant, password strength requirements",
+    "projects": "Name and description validation",
+    "tasks": "Title required, priority and status from enums",
+    "subscriptionLimits": "maxUsers and maxProjects enforced per tenant"
+  },
+  "securityFeatures": [
+    "JWT authentication with 24-hour expiry",
+    "bcryptjs password hashing (cost: 10)",
+    "CORS enabled for frontend-backend communication",
+    "Role-based access control (RBAC) on all endpoints",
+    "Tenant data isolation - users can only access own tenant data",
+    "Audit logging for all modifications",
+    "Non-root Docker user for security"
+  ],
+  "databaseSchema": {
+    "Tenant": "id, name, subdomain, status, subscription (plan), maxUsers, maxProjects, createdAt",
+    "User": "id, email, password (hashed), fullName, role, tenantId, createdAt",
+    "Project": "id, name, description, status, tenantId, createdAt",
+    "Task": "id, title, description, priority, status, projectId, createdAt",
+    "AuditLog": "id, userId, tenantId, action, entityType, entityId, changes, createdAt"
+  },
+  "automatedSetup": [
+    "Automatic schema migrations via Prisma db push",
+    "Seed data creation on first startup",
+    "Health check verification before server start",
+    "Database connection validation",
+    "Type generation for Prisma models"
+  ],
+  "docsLocation": "docs/API.md",
+  "notes": [
+    "All times are stored in UTC in database",
+    "Tokens expire after 24 hours of issuance",
+    "Subscription plan determines user and project limits",
+    "Tenant admins can only manage their own tenant",
+    "Super admin can view all tenants but cannot modify them",
+    "Frontend uses localStorage for token persistence",
+    "All API responses follow {success, message, data} format",
+    "Database automatically initializes on first container startup"
+  ]
 }

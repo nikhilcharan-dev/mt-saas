@@ -1,0 +1,350 @@
+/* ======================================
+   UPDATED THEME VARIABLES (PURPLE MODE)
+====================================== */
+:root {
+  --bg: #0b0614;                 /* Deep violet */
+  --surface: #12081f;            /* Card base */
+  --primary: #a855f7;            /* Purple */
+  --primary-strong: #9333ea;
+  --border: #2e1065;
+  --text: #f5f3ff;
+  --muted: #c4b5fd;
+  --shadow: 0 18px 40px rgba(10, 3, 30, 0.85);
+  --radius: 16px;
+  --accent: #ec4899;             /* Pink accent */
+  --success: #22c55e;
+  --danger: #fb7185;
+}
+
+/* ======================================
+   BASE
+====================================== */
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(168, 85, 247, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.18), transparent 50%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ======================================
+   PAGE
+====================================== */
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 42px 30px 64px;
+}
+
+/* ======================================
+   TOPBAR
+====================================== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  padding: 22px 26px;
+  background: linear-gradient(135deg, #0b0614, #12081f);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ======================================
+   BUTTONS
+====================================== */
+.btn {
+  border: none;
+  border-radius: 14px;
+  padding: 13px 20px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-size: 13px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  color: #1e0537;
+  box-shadow: 0 14px 34px rgba(168, 85, 247, 0.45);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-secondary {
+  background: rgba(18, 8, 31, 0.9);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--danger), #e11d48);
+  color: #450a0a;
+  box-shadow: 0 12px 26px rgba(251, 113, 133, 0.4);
+}
+
+/* ======================================
+   INPUTS
+====================================== */
+.input,
+textarea,
+select {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+  background: #0b0614;
+  color: var(--text);
+}
+
+.input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.35);
+}
+
+/* ======================================
+   CARDS
+====================================== */
+.card {
+  background: linear-gradient(180deg, #0b0614, #12081f);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+/* ======================================
+   TABLES
+====================================== */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #0b0614;
+  border-radius: calc(var(--radius) + 2px);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.table th,
+.table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table thead {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.25),
+    rgba(236, 72, 153, 0.18)
+  );
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #f5d0fe;
+}
+
+.table tbody tr:hover {
+  background: rgba(168, 85, 247, 0.12);
+}
+
+/* ======================================
+   BADGES
+====================================== */
+.badge {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.18);
+  color: #f5d0fe;
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+/* ======================================
+   PROGRESS
+====================================== */
+.progress-track {
+  margin-top: 12px;
+  background: #0b0614;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.6);
+}
+
+/* ======================================
+   ALERTS
+====================================== */
+.alert {
+  border-radius: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  background: #0b0614;
+  font-weight: 700;
+}
+
+.alert.error {
+  border-color: var(--danger);
+  background: rgba(251, 113, 133, 0.18);
+  color: #ffe4e6;
+}
+
+.alert.success {
+  border-color: var(--success);
+  background: rgba(34, 197, 94, 0.18);
+  color: #dcfce7;
+}
+
+/* ======================================
+   AUTH
+====================================== */
+.auth-shell {
+  max-width: 520px;
+  margin: 90px auto;
+  padding: 0 22px;
+}
+
+.auth-card {
+  background: linear-gradient(180deg, #0b0614, #12081f);
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 70px rgba(10, 3, 30, 0.95);
+}
+
+.auth-card h2 {
+  font-size: 34px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ======================================
+   LINKS
+====================================== */
+a,
+.link-muted {
+  color: var(--accent);
+}
+
+a:hover,
+.link-muted:hover {
+  color: var(--primary);
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* ===============================
+   FORM LAYOUT (ALIGNED FIX)
+================================ */
+form.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ===============================
+   LABELS
+================================ */
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===============================
+   INPUTS (FINAL FIX)
+================================ */
+.input,
+input,
+textarea,
+select {
+  width: 100%;
+  height: 48px;              /* ✅ SAME HEIGHT */
+  padding: 0 16px;           /* ✅ SAME LEFT/RIGHT */
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #020617;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 48px;         /* ✅ VERTICAL CENTER TEXT */
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+/* Textarea exception */
+textarea {
+  min-height: 96px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* ===============================
+   INPUT FOCUS
+================================ */
+.input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.35);
+}
+
+/* ===============================
+   PLACEHOLDER ALIGNMENT
+================================ */
+::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}

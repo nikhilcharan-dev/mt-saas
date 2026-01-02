@@ -1,0 +1,27 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# Shell scripts - always use LF
+*.sh text eol=lf
+
+# Docker files - always use LF
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
+*.dockerfile text eol=lf
+
+# Node/JavaScript files - always use LF
+*.js text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+package.json text eol=lf
+package-lock.json text eol=lf
+
+# Git config files - always use LF
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Windows batch files - always use CRLF
+*.cmd text eol=crlf
+*.bat text eol=crlf
